@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_04_203233) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_05_153511) do
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "releases", force: :cascade do |t|
+    t.string "title"
+    t.string "type"
+    t.date "date_of_release"
+    t.string "genre"
+    t.string "language"
+    t.integer "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_releases_on_artist_id"
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string "title"
+    t.integer "length"
+    t.integer "release_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["release_id"], name: "index_songs_on_release_id"
+  end
+
+  add_foreign_key "releases", "artists"
+  add_foreign_key "songs", "releases"
 end
