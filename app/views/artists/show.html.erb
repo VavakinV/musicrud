@@ -1,3 +1,20 @@
 <h1><%= @artist.name %></h1>
 
+<h2>Releases</h2>
+<div id="releases">
+  <% if @releases.any? %>
+    <ul>
+      <% @releases.each do |release| %>
+        <li>
+          <%= link_to release.title, release %> - <%= release.release_type %>, Released on: <%= release.date_of_release.strftime("%B %d, %Y") %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>This artist has no releases yet.</p>
+  <% end %>
+</div>
+
+<hr>
+
 <%= link_to "Back", artists_path %>

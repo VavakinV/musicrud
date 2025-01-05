@@ -5,6 +5,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
+    @releases = @artist.releases.order(date_of_release: :asc)
   end
 
   def new
