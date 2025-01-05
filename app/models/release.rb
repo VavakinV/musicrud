@@ -3,7 +3,7 @@ class Release < ApplicationRecord
   has_many :songs, dependent: :destroy
 
   validates :title, presence: true
-  validates :type, presence: true, inclusion: { in: %w[Album Single EP Compilation Mixtape Bootleg Additional],
+  validates :release_type, presence: true, inclusion: { in: %w[Album Single EP Compilation Mixtape Bootleg Additional],
     message: "must be one of: Album, Single, EP, Compilation, Mixtape, Bootleg, Additional" }
   validates :date_of_release, presence: true
   validates :genre, presence: true

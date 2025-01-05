@@ -1,2 +1,15 @@
-<h1>Releases#index</h1>
-<p>Find me in app/views/releases/index.html.erb</p>
+<h1>Release</h1>
+
+<%= link_to "New release", new_release_path %>
+
+<div id="releases">
+  <% @releases.each do |release| %>
+    <div>
+        <%= link_to release.title, release %>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<%= link_to "Back", root_path %>

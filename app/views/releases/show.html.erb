@@ -1,0 +1,36 @@
+<h1><%= @release.title %></h1>
+
+<p>
+  <strong>Type:</strong> <%= @release.release_type %>
+</p>
+<p>
+  <strong>Release date:</strong> <%= @release.date_of_release.strftime("%B %d, %Y") %>
+</p>
+<p>
+  <strong>Genre:</strong> <%= @release.genre %>
+</p>
+<p>
+  <strong>Language:</strong> <%= @release.language %>
+</p>
+<p>
+  <strong>Artist:</strong> <%= link_to @release.artist.name, @release.artist %>
+</p>
+
+<h2>Songs</h2>
+<div id="songs">
+  <% if @release.songs.any? %>
+    <ul>
+      <% @release.songs.each do |song| %>
+        <li>
+          <%= link_to song.title, song %> - <%= song.formatted_length %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No songs available for this release.</p>
+  <% end %>
+</div>
+
+<hr>
+
+<%= link_to "Back", releases_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_05_153511) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_05_172156) do
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_05_153511) do
 
   create_table "releases", force: :cascade do |t|
     t.string "title"
-    t.string "type"
+    t.string "release_type"
     t.date "date_of_release"
     t.string "genre"
     t.string "language"
