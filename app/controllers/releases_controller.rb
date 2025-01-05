@@ -5,6 +5,7 @@ class ReleasesController < ApplicationController
 
   def show
     @release = Release.find(params[:id])
+    @songs = @release.songs.order(:order_in_release)
   end
 
   def new

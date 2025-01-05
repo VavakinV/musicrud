@@ -1,0 +1,13 @@
+<h1><%= @song.title %></h1>
+
+<p>
+  <strong>Length:</strong> <%= @song.formatted_length %>
+</p>
+
+<p>
+  <strong>Released in:</strong> <%= link_to @song.release.title, @song.release %>
+</p>
+
+<hr>
+
+<%= link_to "Back to songs", songs_path %>

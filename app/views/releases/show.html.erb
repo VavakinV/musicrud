@@ -15,14 +15,17 @@
 <p>
   <strong>Artist:</strong> <%= link_to @release.artist.name, @release.artist %>
 </p>
+<p>
+  <strong>Total length:</strong> <%= @release.total_length %>
+</p>
 
 <h2>Songs</h2>
 <div id="songs">
   <% if @release.songs.any? %>
     <ul>
-      <% @release.songs.each do |song| %>
+      <% @songs.each do |song| %>
         <li>
-          <%= link_to song.title, song %> - <%= song.formatted_length %>
+          <%= song.order_in_release %>. <%= link_to song.title, song %> - <%= song.formatted_length %>
         </li>
       <% end %>
     </ul>
@@ -33,4 +36,4 @@
 
 <hr>
 
-<%= link_to "Back", releases_path %>
+<%= link_to "Back to releases", releases_path %>

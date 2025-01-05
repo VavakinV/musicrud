@@ -1,0 +1,27 @@
+<h1>New Song</h1>
+
+<%= form_with model: @song do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: "Enter the song title" %>
+  </div>
+
+  <div>
+    <%= form.label :length %>
+    <%= form.text_field :length, placeholder: "Song length in format MM:SS" %>
+  </div>
+
+  <div>
+    <%= form.label :release_id, "Release" %>
+    <%= form.collection_select :release_id, Release.all, :id, :title, prompt: "Select a Release" %>
+  </div>
+
+  <div>
+    <%= form.label :order_in_release, "Order in Release" %>
+    <%= form.number_field :order_in_release, min: 1, placeholder: "Order number in which song plays in respective release" %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Song" %>
+  </div>
+<% end %>

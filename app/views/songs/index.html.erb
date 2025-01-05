@@ -1,2 +1,17 @@
-<h1>Songs#index</h1>
-<p>Find me in app/views/songs/index.html.erb</p>
+<h1>Song</h1>
+
+<%= link_to "New song", new_song_path %>
+
+<hr>
+
+<div id="songs">
+  <% @songs.each do |song| %>
+    <div>
+        <%= link_to "#{song.release.artist.name} - #{song.title}", song %>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<%= link_to "Back", root_path %>
