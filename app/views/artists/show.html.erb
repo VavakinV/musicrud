@@ -15,7 +15,11 @@
   <% end %>
 </div>
 
-<%= link_to "Edit this artist", edit_artist_path(@artist)%>
+<%= form_with model: @artist, method: :delete do |form| %>
+  <button type="submit" onclick="return confirm('Are you sure? This will also delete all releases and songs by this artist.')">
+    Delete this artist
+  </button>
+<% end %>
 
 <hr>
 

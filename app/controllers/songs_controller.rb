@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: %i[show edit update]
+  before_action :set_song, only: %i[show edit update destroy]
   before_action :format_length_to_i, only: %i[create update]
   before_action :format_length_to_s, only: %i[edit]
 
@@ -32,6 +32,11 @@ class SongsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @song.destroy
+    redirect_to songs_path
   end
 
   private

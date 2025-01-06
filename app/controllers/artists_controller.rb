@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: %i[show edit update]
+  before_action :set_artist, only: %i[show edit update destroy]
 
   def index
     @artists = Artist.all
@@ -31,6 +31,11 @@ class ArtistsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @artist.destroy
+    redirect_to artists_path
   end
 
   private

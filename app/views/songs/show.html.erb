@@ -10,6 +10,12 @@
 
 <%= link_to "Edit this song", edit_song_path(@song)%>
 
+<%= form_with model: @song, method: :delete do |form| %>
+  <button type="submit" onclick="return confirm('Are you sure?')">
+    Delete this song
+  </button>
+<% end %>
+
 <hr>
 
 <%= link_to "Back to songs", songs_path %>
