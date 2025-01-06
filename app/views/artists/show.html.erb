@@ -1,26 +1,40 @@
-<h1><%= @artist.name %></h1>
+<h1 class="artist-name"><%= @artist.name %></h1>
 
-<h2>Releases</h2>
-<div id="releases">
+<h2 class="releases-heading">Releases</h2>
+<div class="releases-list">
   <% if @releases.any? %>
-    <ul>
+    <ul class="releases">
       <% @releases.each do |release| %>
-        <li>
-          <%= link_to release.title, release %> - <%= release.release_type %>, Released on: <%= release.date_of_release.strftime("%B %d, %Y") %>
+        <li class="release-item">
+          <div class="release-cover">
+            <% if release.cover.attached? %>
+              <%= image_tag release.cover, class: "release-cover-img" %>
+            <% else %>
+              <div class="empty-cover"></div>
+            <% end %>
+          </div>
+          <div class="release-details">
+            <%= link_to release.title, release, class: "release-link" %> - 
+            <span class="release-type"><%= release.release_type %></span>, 
+            <span class="release-date">Released on: <%= release.date_of_release.strftime("%B %d, %Y") %></span>
+          </div>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p>This artist has no releases yet.</p>
+    <p class="no-releases">This artist has no releases yet.</p>
   <% end %>
 </div>
 
-<%= form_with model: @artist, method: :delete do |form| %>
-  <button type="submit" onclick="return confirm('Are you sure? This will also delete all releases and songs by this artist.')">
-    Delete this artist
-  </button>
-<% end %>
+<div class="artist-actions">
+  <%= link_to "Edit this artist", edit_artist_path(@artist), class: "edit-link" %>
+  <%= form_with model: @artist, method: :delete, class: "delete-form" do |form| %>
+    <button type="submit" onclick="return confirm('Are you sure? This will also delete all releases and songs by this artist.')" class="delete-button">
+      Delete this artist
+    </button>
+  <% end %>
+</div>
 
 <hr>
 
-<%= link_to "Back to artists", artists_path %>
+<%= link_to "Back to artists", artists_path, class: "back-link" %>

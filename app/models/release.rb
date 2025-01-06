@@ -1,4 +1,5 @@
 class Release < ApplicationRecord
+  has_one_attached :cover
   belongs_to :artist
   has_many :songs, dependent: :destroy
 

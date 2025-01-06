@@ -1,31 +1,29 @@
-<h1><%= @release.title %></h1>
+<h1 class="release-title"><%= @release.title %></h1>
 
-<p>
-  <strong>Type:</strong> <%= @release.release_type %>
-</p>
-<p>
-  <strong>Release date:</strong> <%= @release.date_of_release.strftime("%B %d, %Y") %>
-</p>
-<p>
-  <strong>Genre:</strong> <%= @release.genre %>
-</p>
-<p>
-  <strong>Language:</strong> <%= @release.language %>
-</p>
-<p>
-  <strong>Artist:</strong> <%= link_to @release.artist.name, @release.artist %>
-</p>
-<p>
-  <strong>Total length:</strong> <%= @release.total_length %>
-</p>
+<% if @release.cover.attached? %>
+  <div class="release-cover-main">
+    <%= image_tag @release.cover, id: "featured_image" %>
+  </div>
+<% end %>
 
-<h2>Songs</h2>
-<div id="songs">
+<div class="release-details">
+  <p><strong>Type:</strong> <%= @release.release_type %></p>
+  <p><strong>Release date:</strong> <%= @release.date_of_release.strftime("%B %d, %Y") %></p>
+  <p><strong>Genre:</strong> <%= @release.genre %></p>
+  <p><strong>Language:</strong> <%= @release.language %></p>
+  <p><strong>Artist:</strong> <%= link_to @release.artist.name, @release.artist, class: "artist-link" %></p>
+  <p><strong>Total length:</strong> <%= @release.total_length %></p>
+</div>
+
+<h2 class="songs-heading">Songs</h2>
+<div class="songs-list">
   <% if @release.songs.any? %>
-    <ul>
+    <ul class="songs">
       <% @songs.each do |song| %>
-        <li>
-          <%= song.order_in_release %>. <%= link_to song.title, song %> - <%= song.formatted_length %>
+        <li class="song-item">
+          <span class="song-order"><%= song.order_in_release %></span>.
+          <%= link_to song.title, song, class: "song-link" %> - 
+          <span class="song-length"><%= song.formatted_length %></span>
         </li>
       <% end %>
     </ul>
@@ -34,14 +32,15 @@
   <% end %>
 </div>
 
-<%= link_to "Edit this release", edit_release_path(@release)%>
-
-<%= form_with model: @release, method: :delete do |form| %>
-  <button type="submit" onclick="return confirm('Are you sure? This will also delete all songs from this release.')">
-    Delete this release
-  </button>
-<% end %>
+<div class="release-actions">
+  <%= link_to "Edit this release", edit_release_path(@release), class: "edit-link" %>
+  <%= form_with model: @release, method: :delete, class: "delete-form" do |form| %>
+    <button type="submit" onclick="return confirm('Are you sure? This will also delete all songs from this release.')" class="delete-button">
+      Delete this release
+    </button>
+  <% end %>
+</div>
 
 <hr>
 
-<%= link_to "Back to releases", releases_path %>
+<%= link_to "Back to releases", releases_path, class: "back-link" %>

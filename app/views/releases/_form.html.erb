@@ -30,6 +30,11 @@
     </div>
 
     <div>
+        <%= form.label :cover, style: "display: block" %>
+        <%= form.file_field :cover, accept: "image/*" %>
+    </div>
+
+    <div>
         <%= form.submit%>
     </div>
 <% end %>

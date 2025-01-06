@@ -1,0 +1,36 @@
+.release-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.release-cover-main img {
+    max-width: 15%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.release-details p {
+    margin: 10px 0;
+}
+
+.songs-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.songs-list .song-item {
+    margin: 8px 0;
+}
+
+.songs-list .song-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.songs-list .song-link:hover {
+    text-decoration: underline;
+}
+
+.release-actions {
+    margin-top: 20px;
+}
