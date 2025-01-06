@@ -1,10 +1,12 @@
 <h1 class="release-title"><%= @release.title %></h1>
 
-<% if @release.cover.attached? %>
-  <div class="release-cover-main">
-    <%= image_tag @release.cover, id: "featured_image" %>
-  </div>
-<% end %>
+<div class="release-cover-main">
+  <% if @release.cover.attached? %>
+    <%= image_tag @release.cover, class: "featured_image" %>
+  <% else %>
+    <div class="empty-cover"></div>
+  <% end %>
+</div>
 
 <div class="release-details">
   <p><strong>Type:</strong> <%= @release.release_type %></p>
