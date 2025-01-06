@@ -7,7 +7,7 @@
 <div id="releases">
   <% @releases.each do |release| %>
     <div>
-        <%= link_to release.title, release %>
+        <%= link_to "#{release.artist.name} - #{release.title}", release %>
     </div>
   <% end %>
 </div>

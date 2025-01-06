@@ -1,10 +1,11 @@
 class ReleasesController < ApplicationController
+  before_action :set_release, only: %i[show edit update]
+
   def index
     @releases = Release.all
   end
 
   def show
-    @release = Release.find(params[:id])
     @songs = @release.songs.order(:order_in_release)
   end
 
@@ -21,7 +22,22 @@ class ReleasesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @release.update(release_params)
+      redirect_to @release
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+  def set_release
+    @release = Release.find(params[:id])
+  end
+
   def release_params
     params.require(:release).permit(:title, :release_type, :date_of_release, :genre, :language, :artist_id)
   end

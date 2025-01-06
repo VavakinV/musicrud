@@ -1,10 +1,11 @@
 class ArtistsController < ApplicationController
+  before_action :set_artist, only: %i[show edit update]
+
   def index
     @artists = Artist.all
   end
 
   def show
-    @artist = Artist.find(params[:id])
     @releases = @artist.releases.order(date_of_release: :asc)
   end
 
@@ -21,7 +22,22 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @artist.update(artist_params)
+      redirect_to @artist
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+  def set_artist
+    @artist = Artist.find(params[:id])
+  end
+
   def artist_params
     params.expect(artist: [:name])
   end

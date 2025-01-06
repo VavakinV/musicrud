@@ -1,10 +1,13 @@
 class SongsController < ApplicationController
+  before_action :set_song, only: %i[show edit update]
+  before_action :format_length_to_i, only: %i[create update]
+  before_action :format_length_to_s, only: %i[edit]
+
   def index
     @songs = Song.all
   end
 
   def show
-    @song = Song.find(params[:id])
   end
 
   def new
@@ -12,11 +15,7 @@ class SongsController < ApplicationController
   end
 
   def create
-    length_in_seconds = parse_length(params[:song][:length])
-    params[:song][:length] = length_in_seconds if length_in_seconds
-
     @song = Song.new(song_params)
-
     if @song.save
       redirect_to @song, notice: "Song was successfully created."
     else
@@ -24,10 +23,33 @@ class SongsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @song.update(song_params)
+      redirect_to @song
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+  def set_song
+    @song = Song.find(params[:id])
+  end
 
   def song_params
     params.require(:song).permit(:title, :length, :order_in_release, :release_id)
+  end
+
+  def format_length_to_i
+    length_in_seconds = parse_length(params[:song][:length])
+    params[:song][:length] = length_in_seconds if length_in_seconds
+  end
+
+  def format_length_to_s
+    @song.length = @song.formatted_length
   end
 
   def parse_length(length)

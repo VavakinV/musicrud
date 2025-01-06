@@ -1,0 +1,10 @@
+<%= form_with model: artist do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name, placeholder: "Enter the artist name" %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+<% end %>

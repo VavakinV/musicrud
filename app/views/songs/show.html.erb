@@ -5,8 +5,10 @@
 </p>
 
 <p>
-  <strong>Released in:</strong> <%= link_to @song.release.title, @song.release %>
+  <strong>Song number <%= @song.order_in_release%> on:</strong> <%= link_to @song.release.title, @song.release %>
 </p>
+
+<%= link_to "Edit this song", edit_song_path(@song)%>
 
 <hr>
 
