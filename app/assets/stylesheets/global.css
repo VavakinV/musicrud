@@ -1,9 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #007bff, #ffffff);
     color: #333;
     line-height: 1.6;
     padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 h1 {
@@ -11,15 +17,19 @@ h1 {
     margin-bottom: 10px;
     color: #333;
     font-size: 2.5em;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); 
 }
 
 a {
-    color: #007bff;
+    color: #0056b3;
     text-decoration: none;
+    font-weight: bold;
 }
 
 a:hover, a:focus {
     text-decoration: underline;
+    color: #003f7f; 
 }
 
 button {
@@ -30,18 +40,12 @@ button {
     font-size: 1em;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s; 
 }
 
 button:hover, button:focus {
     background-color: #0056b3;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 15px;
+    transform: scale(1.05); 
 }
 
 input, select, textarea {
@@ -49,11 +53,13 @@ input, select, textarea {
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input:focus, select:focus, textarea:focus {
     border-color: #007bff;
     outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.3);
 }
 
 ul {
@@ -62,12 +68,17 @@ ul {
 }
 
 li {
-    margin-bottom: 10px;   
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 hr {
-    border: 1px solid #ddd;
+    border: 1px solid rgba(0, 0, 0, 0.1); 
     margin: 20px 0;
+    width: 100%;
 }
 
 .delete-button {
@@ -76,18 +87,40 @@ hr {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.delete-form{
+    background: none;
+    box-shadow: none;
+    border-color: transparent;
 }
 
 .delete-button:hover {
     background-color: #c82333;
+    transform: scale(1.05);
 }
 
-.back-link {
+.back-link .edit-link {
     text-decoration: none;
     font-size: 1.1em;
-    color: #007bff;
+    color: #0056b3;
 }
 
 .back-link:hover {
     text-decoration: underline;
+    color: #003f7f; 
+}
+
+.home-page-link {
+    border-radius: 20px;
+    background-color: #cfe2f3;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.actions {
+    margin-top: 20px;
+    text-align: center;
 }

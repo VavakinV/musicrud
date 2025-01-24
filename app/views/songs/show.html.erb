@@ -14,7 +14,7 @@
   </p>
 </div>
 
-<div class="song-actions">
+<div class="actions">
   <%= link_to "Edit this song", edit_song_path(@song), class: "edit-link" %>
   <%= form_with model: @song, method: :delete, class: "delete-form" do |form| %>
     <button type="submit" onclick="return confirm('Are you sure?')" class="delete-button" >

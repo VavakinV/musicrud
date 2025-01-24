@@ -20,21 +20,21 @@
 <h2 class="songs-heading">Songs</h2>
 <div class="songs-list">
   <% if @release.songs.any? %>
-    <ul class="songs">
+    <div class="songs">
       <% @songs.each do |song| %>
-        <li class="song-item">
+        <div class="song-item">
           <span class="song-order"><%= song.order_in_release %></span>.
           <%= link_to song.title, song, class: "song-link" %> - 
           <span class="song-length"><%= song.formatted_length %></span>
-        </li>
+        </div>
       <% end %>
-    </ul>
+    </div>
   <% else %>
     <p>No songs available for this release.</p>
   <% end %>
 </div>
 
-<div class="release-actions">
+<div class="actions">
   <%= link_to "Edit this release", edit_release_path(@release), class: "edit-link" %>
   <%= form_with model: @release, method: :delete, class: "delete-form" do |form| %>
     <button type="submit" onclick="return confirm('Are you sure? This will also delete all songs from this release.')" class="delete-button">

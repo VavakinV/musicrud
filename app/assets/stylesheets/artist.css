@@ -21,6 +21,8 @@
     display: flex;
     align-items: center;
     margin: 10px 0;
+    background-color: #cfe2f3;
+    border-radius: 20px;
 }
 
 .release-cover {
